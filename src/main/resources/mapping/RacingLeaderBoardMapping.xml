@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cyou.wechat_longmarch_server.mapper.RacingLeaderBoardMapper">
+
+    <select id="queryAllByUserId" resultType="com.cyou.wechat_longmarch_server.entity.table.RacingLeaderboard">
+        SELECT * FROM racing_leaderboard WHERE user_id = #{userId}
+    </select>
+
+</mapper>

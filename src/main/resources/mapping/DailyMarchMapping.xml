@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cyou.wechat_longmarch_server.mapper.DailyMarchMapper">
+
+    <insert id="save" parameterType="com.cyou.wechat_longmarch_server.entity.table.DailyMarch">
+        insert into daily_march(id,real_name,phone_number,nick_name,avatar_url)
+        values(#{id},#{real_name},#{phone_number},#{nick_name},#{avatar_url})
+    </insert>
+
+    <update id="updateByUserIdAndCreateDate" parameterType="com.cyou.wechat_longmarch_server.entity.table.DailyMarch">
+        UPDATE daily_march
+        SET
+        <if test="realName !=null and realName !=''">
+            real_name = #{realName},
+        </if>
+        <if test="phoneNumber !=null and phoneNumber !=''">
+            phone_number = #{phoneNumber},
+        </if>
+            nick_name = #{nickName},
+            avatar_url = #{avatarUrl}
+    </update>
+
+    <select id="queryByUserIdAndCreateDate" resultType="com.cyou.wechat_longmarch_server.entity.table.DailyMarch">
+        SELECT * FROM daily_march WHERE user_id = #{userId} AND create_date = #{createDate}
+    </select>
+
+    <select id="queryAllByUserId" resultType="com.cyou.wechat_longmarch_server.entity.table.DailyMarch">
+        SELECT * FROM daily_march WHERE user_id = #{userId}
+    </select>
+
+</mapper>

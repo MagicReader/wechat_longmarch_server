@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cyou.wechat_longmarch_server.mapper.UserInfoMapper">
+
+    <insert id="save" parameterType="com.cyou.wechat_longmarch_server.entity.table.UserInfo">
+        insert into user_info(id,real_name,phone_number,nick_name,avatar_url)
+        values(#{id},#{real_name},#{phone_number},#{nick_name},#{avatar_url})
+    </insert>
+
+    <update id="updateById" parameterType="com.cyou.wechat_longmarch_server.entity.table.UserInfo">
+        UPDATE user_info
+        SET
+        <if test="realName !=null and realName !=''">
+            real_name = #{realName},
+        </if>
+        <if test="phoneNumber !=null and phoneNumber !=''">
+            phone_number = #{phoneNumber},
+        </if>
+            nick_name = #{nickName},
+            avatar_url = #{avatarUrl}
+    </update>
+
+    <select id="queryById" resultType="com.cyou.wechat_longmarch_server.entity.table.UserInfo">
+        SELECT * FROM user_info WHERE id = #{userId}
+    </select>
+
+</mapper>
